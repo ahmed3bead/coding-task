@@ -1,10 +1,10 @@
 <?php
 
-namespace App\MyApp\Users\DTOs;
+namespace MyApp\Comments\DTOs;
 
 use MyApp\Base\BaseDTO;
 
-class UserDTO extends BaseDTO
+class CommentDTO extends BaseDTO
 {
 
     public function jsonSerialize()

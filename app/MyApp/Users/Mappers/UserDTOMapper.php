@@ -2,7 +2,9 @@
 
 namespace App\MyApp\Users\Mappers;
 
-class UserDTOMapper
+use MyApp\Base\BaseDTOMapper;
+
+class UserDTOMapper extends BaseDTOMapper
 {
 
 }

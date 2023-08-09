@@ -2,7 +2,7 @@
 
 namespace App\MyApp\Users\Mappers;
 
-class UserDTOMapper
+class PostDTOMapper
 {
 
 }

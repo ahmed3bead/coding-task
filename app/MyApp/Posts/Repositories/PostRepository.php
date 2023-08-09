@@ -2,7 +2,7 @@
 
 namespace App\MyApp\Users\Repositories;
 
-class UserRepository
+class PostRepository
 {
 
 }
