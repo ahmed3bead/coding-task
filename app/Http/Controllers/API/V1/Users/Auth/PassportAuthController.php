@@ -3,49 +3,29 @@
 namespace App\Http\Controllers\API\V1\Users\Auth;
 
 namespace App\Http\Controllers\API\V1\Users\Auth;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use MyApp\Users\Model\User;
+use App\MyApp\Users\Requests\Auth\LoginRequest;
+use App\MyApp\Users\Requests\Auth\RegisterRequest;
+use App\MyApp\Users\Services\AuthService;
+use MyApp\Base\Response;
 
 class PassportAuthController extends Controller
 {
-    /**
-     * Registration
-     */
-    public function register(Request $request)
+    private AuthService $userService;
+
+    public function __construct(AuthService $service)
     {
-        $this->validate($request, [
-            'name' => 'required|min:4',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
-
-        $token = $user->createToken('LaravelAuthApp')->accessToken;
-
-        return response()->json(['token' => $token], 200);
+        $this->service = $service;
     }
 
-    /**
-     * Login
-     */
-    public function login(Request $request)
+    public function register(RegisterRequest $request): Response
     {
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+        return $this->service->register($request);
+    }
 
-        if (auth()->attempt($data)) {
-            $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
-            return response()->json(['token' => $token], 200);
-        } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
-        }
+    public function login(LoginRequest $request)
+    {
+        return $this->service->login($request);
     }
 }

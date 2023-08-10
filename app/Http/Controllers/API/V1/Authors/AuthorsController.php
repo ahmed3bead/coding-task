@@ -1,12 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\API\V1\Posts;
+namespace App\Http\Controllers\API\V1\Authors;
 
 use App\Http\Controllers\Controller;
+use App\MyApp\Authors\Services\AuthorService;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class AuthorsController extends Controller
 {
+
+    private AuthorService $authorService;
+
+    public function __construct(AuthorService $authorService)
+    {
+        $this->authorService = $authorService;
+    }
+
     /**
      * Display a listing of the resource.
      *

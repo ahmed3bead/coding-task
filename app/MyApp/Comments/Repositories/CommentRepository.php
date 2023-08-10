@@ -1,8 +1,15 @@
 <?php
 
-namespace App\MyApp\Users\Repositories;
+namespace App\MyApp\Comments\Repositories;
 
-class CommentRepository
+use App\MyApp\Comments\Model\Comment;
+use Prettus\Repository\Eloquent\BaseRepository;
+
+class CommentRepository extends BaseRepository
 {
 
+    public function model()
+    {
+        return Comment::class;
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\MyApp\Users\Services;
+namespace App\MyApp\Comments\Services;
 
 class CommentService
 {
